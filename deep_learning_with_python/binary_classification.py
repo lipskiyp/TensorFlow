@@ -11,20 +11,8 @@ from keras.optimizers import RMSprop
 import matplotlib.pyplot as plt
 import numpy as np
 
-"""
-/venv/lib/python3.8/site-packages/tensorflow/python/keras/utils/data_util.py
+from utils import vectorize_sequences
 
-Add below imports:
-import requests
-try:
-    _create_unverified_https_context = ssl._create_unverified_context
-except AttributeError:
-    # Legacy Python that doesn't verify HTTPS certificates by default
-    pass
-else:
-    # Handle target environment that doesn't support HTTPS verification
-    ssl._create_default_https_context = _create_unverified_https_context
-"""
 
 num_words = 10000  # keep only top most frequently occurring words
 num_validation_samples = 10000  # to separate validation data (to test model after every enum)
@@ -33,13 +21,7 @@ num_validation_samples = 10000  # to separate validation data (to test model aft
 (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=num_words)  # data: lists of word indices (i.e. reviews), labels: list of 0s (-ve) and 1s (+ve) reviews
 
 # Vectorize data
-def vectorize_sequences(sequences, dimensions=num_words):
-    res = np.zeros((len(sequences), dimensions))
-    for s, sequence in enumerate(sequences):
-        res[s, sequence] = 1  # convert each review to vector of size num_words (1 if word with corresponding index is present in a review)
-    return res
-
-train_data, test_data = vectorize_sequences(train_data), vectorize_sequences(test_data)
+train_data, test_data = vectorize_sequences(train_data, dimensions=num_words), vectorize_sequences(test_data, dimensions=num_words)
 train_labels, test_labels = np.asarray(train_labels).astype('float32'), np.asarray(test_labels).astype('float32')
 
 # Separate validation set
