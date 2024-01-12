@@ -92,3 +92,5 @@ history = model.fit(  # train each model on K-1 partitions
     batch_size=16,
     verbose=0,  #  silent mode
 )
+
+print()
