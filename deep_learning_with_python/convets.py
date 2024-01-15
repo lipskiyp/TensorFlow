@@ -32,25 +32,25 @@ model.add(
     Conv2D(32, (3,3), activation="relu", input_shape=(28, 28, 1))  # => (None, 26, 26, 32)
 )
 model.add(
-    MaxPooling2D((2, 2))
+    MaxPooling2D((2, 2))  # => (None, 13, 13, 32)
 )
 model.add(
-    Conv2D(64, (3, 3), activation="relu")
+    Conv2D(64, (3, 3), activation="relu")  # => (None, 11, 11, 64)
 )
 model.add(
-    MaxPooling2D((2, 2))
+    MaxPooling2D((2, 2))  # => (None, 5, 5, 64)
 )
 model.add(
-    Conv2D(64, (3, 3), activation="relu")
+    Conv2D(64, (3, 3), activation="relu")  # => (None, 3, 3, 64)
 )
 model.add(
-    Flatten()  # classifier network accepts 1D vectors
+    Flatten()  # classifier network accepts 1D vectors  => (None, 576)  (3*3*64)
 )
 model.add(
-    Dense(64, activation="relu")
+    Dense(64, activation="relu")  # => (None, 64)
 )
 model.add(
-    Dense(10, activation="softmax")  # 10-way classification
+    Dense(10, activation="softmax")  # 10-way classification => (None, 10)
 )
 
 

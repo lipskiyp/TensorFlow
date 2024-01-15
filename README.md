@@ -1,12 +1,15 @@
 # TensorFlow Practice Project
 
+## /deep_learning_with_python
 
-# Notes
+    Follows examples from "Deep Learning with Python" by FRANÇOIS CHOLLET, with additional comments/modifications.
 
-For issues with TensorFlow certificate try to edit:
-/venv/lib/python3.8/site-packages/tensorflow/python/keras/utils/data_util.py
+## Notes
 
-Add below imports:
+    For issues with TensorFlow certificate try to edit:
+    /venv/lib/python3.8/site-packages/tensorflow/python/keras/utils/data_util.py
+
+    Add below imports:
 
 ```python
 import requests
